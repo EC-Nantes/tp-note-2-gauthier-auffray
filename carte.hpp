@@ -25,7 +25,7 @@ private:
     TypeAction_t typeAction;
     uint8_t nbCase;
 public:
-    Carte_t();  // constructor
+    Carte_t(CouleurCarte_t, TypeAction_t, uint8_t);  // constructor
     ~Carte_t(); // destructor
 };
 
