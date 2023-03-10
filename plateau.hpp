@@ -8,7 +8,7 @@
 class Plateau_t{
 
     private:
-        std::vector<Carte_t*> mv_jeu_cartes;
+        std::vector<Carte_t*> mv_pioche;
         std::vector<Joueur_t*> mv_joueurs;
         std::vector<std::vector<Joueur_t*>> mv_cases;
         
@@ -17,6 +17,7 @@ class Plateau_t{
         ~Plateau_t();
 
         //Méthodes
+        void initPioche();
         void initTirage();
         void action(Joueur_t);
 };
