@@ -2,6 +2,7 @@
 #define CARTE_HPP
 
 #include <cstdint>
+#include <iostream>
 
 enum CouleurCarte_t {
     ROUGE,
@@ -27,7 +28,11 @@ private:
 public:
     Carte_t(CouleurCarte_t, TypeAction_t, uint8_t);  // constructor
     ~Carte_t(); // destructor
+
+    friend std::ostream& operator<<(std::ostream&, Carte_t&); //fonction pouvant etre appelé sans instanciation d'objet mais accès membres
 };
+
+
 
 
 #endif
