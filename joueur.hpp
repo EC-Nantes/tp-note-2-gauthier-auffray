@@ -1,5 +1,5 @@
 #ifndef JOUEUR_HPP
-#define JOUEUR8HPP
+#define JOUEUR_HPP
 
 #include <vector>
 #include "carte.hpp"
@@ -22,6 +22,8 @@ class Joueur_t{
         Joueur_t(/* args */);
         ~Joueur_t();
 
+        //Méthodes
+        void initTirage();
         void choixCarte();
         void tirage();
 };
