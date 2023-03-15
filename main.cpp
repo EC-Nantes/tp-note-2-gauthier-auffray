@@ -20,10 +20,9 @@ int main() {
         std::cin >> choix;
         char_endl = std::cin.get();
     }
-    
-
-    uint8_t nb_joueur;
-    Plateau_t plateau(0);
+    uint8_t nb_joueur = choix - '0';
+    std::cout << "nb joueur : " << unsigned(nb_joueur);
+    Plateau_t plateau(nb_joueur);
     plateau.initPioche();
 
     // TypeAction_t AVANCER;
