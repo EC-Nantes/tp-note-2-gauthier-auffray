@@ -5,6 +5,7 @@
 #include "carte.hpp"
 #include "joueur.hpp"
 #include "plateau.hpp"
+#include "joueurReel.hpp"
 
 void test_choix_carte();
 
