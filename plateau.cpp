@@ -1,4 +1,6 @@
 #include "plateau.hpp"
+#include <algorithm>
+#include <iostream>
 
 void Plateau_t::initPioche() {
     CouleurCarte_t couleur = CouleurCarte_t::ROUGE;
@@ -38,6 +40,17 @@ void Plateau_t::initPioche() {
         Carte_t carte(couleur, typeAction, 1);
         mv_pioche.push_back(&carte);
     }
+    std::cout << "Carte avant melange :\n";
+    for(auto vect : mv_pioche) {
+        std::cout << vect << "\n";
+    } 
 
-    // To do : mélanger le paquet.
+    std::random_shuffle(mv_pioche.begin(), mv_pioche.end());
+
+    std::cout << "Carte apres melange :\n";
+    for(auto vect : mv_pioche) {
+        std::cout << vect << "\n";
+    }
+
+    // To do : mélanger le paquet
 }
