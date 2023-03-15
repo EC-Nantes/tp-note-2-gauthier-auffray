@@ -2,6 +2,7 @@
 #include "carte.hpp"
 #include "joueur.hpp"
 #include "plateau.hpp"
+#include "tests_unitaires.hpp"
 
 int main() {
     std::cout << "*********************************\n";
