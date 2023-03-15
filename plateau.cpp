@@ -14,14 +14,17 @@ Plateau_t::Plateau_t(uint8_t nb_joueur_reel) {
         Bot_t* bot = new Bot_t((Couleur_joueur)i);
         this->mv_joueurs.push_back(bot);
     }
+    for(auto& i : mv_joueurs) {
+        std::cout << *i << "\n";
+    }
 }
 
 Plateau_t::~Plateau_t() {
-    for(auto& pItem : mv_pioche){  
+    for(auto& pItem : mv_pioche) {  
         delete pItem;
     }
     mv_pioche.clear();
-    for(auto& pItem2 : mv_joueurs){  
+    for(auto& pItem2 : mv_joueurs) {  
         delete pItem2;
     }
     mv_joueurs.clear();
@@ -73,4 +76,8 @@ Carte_t* Plateau_t::tirerCarte() {
     Carte_t* to_return = mv_pioche.back();
     mv_pioche.pop_back();
     return to_return;
+}
+
+void Plateau_t::initTirage() {
+    
 }

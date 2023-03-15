@@ -1,4 +1,5 @@
 #include "joueurReel.hpp"
+#include <string>
 
 //Méthodes
 void JoueurReel_t::choixCarte() {
@@ -20,9 +21,4 @@ void JoueurReel_t::choixCarte() {
     m_active_carte = mv_cartes[iChoix - 1];
     std::cout << "[Selection] Carte " << choix << " - " << *m_active_carte << "\n";
     mv_cartes.erase(mv_cartes.begin() + (choix - 1)); //On supprime la carte de notre jeu
-}
-
-std::ostream& operator<<(std::ostream& o, JoueurReel_t& c) {
-    std::cout << "Joueur reel, couleur : ";
-    return o;
 }

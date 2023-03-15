@@ -4,7 +4,7 @@
 //Méthodes
 void Bot_t::choixCarte() {
     std::vector<Carte_t*>::const_iterator it_carte = mv_cartes.begin();
-    char choix = 0;
+    //char choix = 0;
     int i = 1;
     std::cout << "Le bot choisis une carte : \n";
     int choix = rand() % 5 + 1;
