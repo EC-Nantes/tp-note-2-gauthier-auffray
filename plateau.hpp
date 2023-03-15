@@ -14,6 +14,12 @@ class Plateau_t{
         
     public:
         Plateau_t() {}  // contructor
+        ~Plateau_t() {
+            for(auto& pItem : mv_pioche){  
+                delete pItem;
+            }
+            mv_pioche.clear();
+        }
 
         //Méthodes
         void initPioche();
