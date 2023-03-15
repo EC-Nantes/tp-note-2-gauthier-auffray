@@ -17,7 +17,7 @@ class Joueur_t{
     private:
         std::vector<Carte_t*> mv_cartes;
         Carte_t* m_active_carte;
-        std::vector<Carte_t*>::const_iterator it_carte = mv_cartes.begin();
+       
 
     public:
         Joueur_t(Couleur_joueur couleur);
@@ -25,14 +25,11 @@ class Joueur_t{
         ~Joueur_t();
 
         //Méthodes
+        void addCarte(Carte_t* carte);
         void choixCarte();
         void tirage();
 };
 
-Joueur_t::Joueur_t(Couleur_joueur couleur){
-}
 
-Joueur_t::~Joueur_t(){
-}
 
 #endif
