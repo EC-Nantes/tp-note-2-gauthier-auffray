@@ -16,12 +16,13 @@ class Joueur_t{
 
     protected:
         std::vector<Carte_t*> mv_cartes;
-        Carte_t* m_active_carte;
+        Carte_t* m_active_carte; 
+        Couleur_joueur m_couleur;
 
     public:
         //Constructeurs
-        Joueur_t(Couleur_joueur couleur) {}
-        Joueur_t() {}
+        Joueur_t(Couleur_joueur couleur) {m_couleur = couleur;}
+        Joueur_t() = delete;
 
         //Méthodes
         void addCarte(Carte_t* carte);

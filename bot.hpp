@@ -8,8 +8,8 @@ class Bot_t : public Joueur_t {
 
     public:
         //Constructeurs
-        Bot_t(Couleur_joueur couleur) {}
-        Bot_t() {}
+        Bot_t(Couleur_joueur couleur) : Joueur_t(couleur) {}
+        Bot_t() = delete;
 
         //Méthodes
         void choixCarte();

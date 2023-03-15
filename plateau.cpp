@@ -1,9 +1,13 @@
 #include "plateau.hpp"
 #include <algorithm>
 #include <iostream>
+#include "joueurReel.hpp"
 
 Plateau_t::Plateau_t(uint8_t nb_joueur_reel) {
-    
+    int i = 0;
+    for(i = 0; i < nb_joueur_reel; i++) {
+        JoueurReel_t* joueur = new JoueurReel_t((Couleur_joueur)i);
+    }
 }
 
 Plateau_t::~Plateau_t() {
@@ -56,7 +60,7 @@ void Plateau_t::initPioche() {
 }
 
 Carte_t* Plateau_t::tirerCarte() {
-            Carte_t* to_return = mv_pioche.back();
-            mv_pioche.pop_back();
-            return to_return;
+    Carte_t* to_return = mv_pioche.back();
+    mv_pioche.pop_back();
+    return to_return;
 }
