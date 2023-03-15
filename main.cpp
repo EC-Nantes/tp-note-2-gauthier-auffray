@@ -4,10 +4,9 @@
 #include "plateau.hpp"
 
 int main() {
-    // Plateau_t plateau;
-    // plateau.initPioche();
+    Plateau_t plateau;
+    plateau.initPioche();
 
-    TypeAction_t AVANCER;
     uint8_t case1 = 1;
     uint8_t case2 = 2;
 

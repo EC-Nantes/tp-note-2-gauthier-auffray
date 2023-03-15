@@ -12,7 +12,7 @@ void Joueur_t::choixCarte(){
     int i = 1;
     std::cout << "Veuillez choisir une carte en tapant son numero : \n";
     for(it_carte; it_carte != mv_cartes.end(); it_carte++){
-        std::cout << "Carte : " << i << " - " << **it_carte << "\n";
+        std::cout << "Carte " << i << " - " << **it_carte << "\n";
         i++;
     }
     while ( (choix < 1) && (choix > 5)){
