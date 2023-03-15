@@ -13,12 +13,18 @@ class Plateau_t{
         std::vector<std::vector<Joueur_t*>> mv_cases;
         
     public:
-        Plateau_t() {}
+        Plateau_t() {}  // contructor
+        ~Plateau_t() {
+            for(auto& pItem : mv_pioche){  
+                delete pItem;
+            }
+            mv_pioche.clear();
+        }
 
         //Méthodes
         void initPioche();
-        void initTirage();
-        void action(Joueur_t);
+        // void initTirage();
+        // void action(Joueur_t);
 };
 
 

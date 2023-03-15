@@ -19,5 +19,6 @@ plateau.o : plateau.cpp
 
 clean :
 	del *.o
+	rm *.o
 
 #Pour ensuite executer : mingw32-make all puis .\TP_Tortues.exe
