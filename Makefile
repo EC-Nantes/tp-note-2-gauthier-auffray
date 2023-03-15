@@ -15,7 +15,7 @@ joueur.o : joueur.cpp
 	g++ -o joueur.o -c joueur.cpp
 
 plateau.o : plateau.cpp
- 	g++ -o plateau.o -c plateau.cpp
+	g++ -o plateau.o -c plateau.cpp
 
 clean :
 	del *.o

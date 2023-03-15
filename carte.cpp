@@ -21,7 +21,7 @@ std::ostream& operator<<(std::ostream& o, Carte_t& c) {
             action = "Reculer";
             break;
         case 2:
-            action = "Avancer toute les dernieres tortues";
+            action = "Avancer";
             break;
         default:
             action = "error";
@@ -43,19 +43,29 @@ std::ostream& operator<<(std::ostream& o, Carte_t& c) {
         case 4:
             couleur = "violet";
             break;
+        case 5:
+            couleur = "neutre";
+            break;
         default:
             couleur = "error";
     }
 
-    if(c.typeAction != 2){
-        o << "Action : " << action << " ";
-        o << "de " << unsigned(c.nbCase) << " cases ";
-        o << "les tortues de couleur " << couleur << " .\n";
+    if (c.couleur == 5) {
+        if (c.typeAction != 2) {
+            o << "Action : " << action << " ";
+            o << "de " << unsigned(c.nbCase) << " case(s) ";
+            o << "une tortue de la couleur de votre choix.\n";
+        }
+        else { //DERNIERES
+            o << "Action : " << action << " ";
+            o << "de " << unsigned(c.nbCase) << " cases ";
+            o << "une ou les tortues presentes sur la derniere case.\n";
+        }
     }
     else {
         o << "Action : " << action << " ";
-        o << "de " << unsigned(c.nbCase) << " cases .\n";
+        o << "de " << unsigned(c.nbCase) << " cases ";
+        o << "les tortues de couleur " << couleur << ".\n";  
     }
-   
     return o;
 }

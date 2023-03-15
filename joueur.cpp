@@ -15,11 +15,12 @@ void Joueur_t::choixCarte(){
         std::cout << "Carte " << i << " - " << **it_carte << "\n";
         i++;
     }
-    while ( (choix < 1) && (choix > 5)){
-        std::cout << "Vous devez entrer un numéro de 1 à 5 : \n";
+    while ( (choix < 1) || (choix > 5) ){
+        std::cout << "Vous devez entrer un numero de 1 a 5 : \n";
         std::cin >> choix;
     }
     m_active_carte = mv_cartes[choix - 1];
+    std::cout << "[Selection] Carte " << choix << " - " << *m_active_carte << "\n";
     mv_cartes.erase(mv_cartes.begin() + (choix - 1)); //On supprime la carte de notre jeu
 }
 
