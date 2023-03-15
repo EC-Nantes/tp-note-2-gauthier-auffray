@@ -14,9 +14,9 @@ enum Couleur_joueur {
 
 class Joueur_t{
 
-    private:
+    protected:
         std::vector<Carte_t*> mv_cartes;
-        Carte_t* m_active_carte; 
+        Carte_t* m_active_carte;
 
     public:
         //Constructeurs
