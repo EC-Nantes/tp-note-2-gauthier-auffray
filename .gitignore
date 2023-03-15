@@ -2,4 +2,3 @@
 .vscode/
 *.o
 *.exe
-main.cpp
