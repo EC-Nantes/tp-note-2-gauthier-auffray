@@ -3,7 +3,7 @@
 #include <iostream>
 
 void Plateau_t::initPioche() {
-    CouleurCarte_t couleur = CouleurCarte_t::ROUGE;
+    CouleurCarte_t couleur = CouleurCarte_t::ROUGE_C;
     TypeAction_t typeAction;
     for(int i = 0; i < 5; i++) {
         typeAction = TypeAction_t::AVANCER;
@@ -20,7 +20,7 @@ void Plateau_t::initPioche() {
         }
         couleur = static_cast<CouleurCarte_t>(i);
     }
-    couleur = CouleurCarte_t::NEUTRE;
+    couleur = CouleurCarte_t::NEUTRE_C;
     typeAction = TypeAction_t::DERNIER;
     for(int i = 0; i < 2; i++) {
         Carte_t carte(couleur, typeAction, 2);

@@ -11,7 +11,7 @@ Carte_t::~Carte_t() {
 
 std::ostream& operator<<(std::ostream& o, Carte_t& c) {
     o << "Action : " << c.typeAction << " ";
-    o << "de " << c.nbCase << " ";
+    o << "de " << unsigned(c.nbCase) << " cases ";
     o << "les tortues de couleur " << c.couleur << " .\n";
     return o;
 }

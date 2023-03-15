@@ -1,7 +1,22 @@
 #include <iostream>
 #include "joueur.hpp"
 
+//Constructeurs
+Joueur_t::Joueur_t(Couleur_joueur couleur){
+
+}
+
+Joueur_t::~Joueur_t(){
+
+}
+
+//Méthodes
+void Joueur_t::addCarte(Carte_t* carte){
+    mv_cartes.push_back(carte);
+}
+
 void Joueur_t::choixCarte(){
+    std::vector<Carte_t*>::const_iterator it_carte = mv_cartes.begin();
     int choix = 0;
     int i = 1;
     std::cout << "Veuillez choisir une carte en tapant son numero : \n";
