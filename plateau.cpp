@@ -1,9 +1,13 @@
 #include "plateau.hpp"
 #include <algorithm>
 #include <iostream>
+#include "joueurReel.hpp"
 
 Plateau_t::Plateau_t(uint8_t nb_joueur_reel) {
-
+    int i = 0;
+    for(i = 0; i < nb_joueur_reel; i++) {
+        JoueurReel_t* joueur = new JoueurReel_t((Couleur_joueur)i);
+    }
 }
 
 Plateau_t::~Plateau_t() {
