@@ -5,6 +5,7 @@
 #include "tests_unitaires.hpp"
 
 int main() {
+    test_choix_carte();
     std::cout << "*********************************\n";
     std::cout << "********* Start tortuga *********\n";
     std::cout << "*********************************\n\n";
