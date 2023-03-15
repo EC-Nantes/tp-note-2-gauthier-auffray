@@ -14,9 +14,6 @@ Plateau_t::Plateau_t(uint8_t nb_joueur_reel) {
         Bot_t* bot = new Bot_t((Couleur_joueur)i);
         this->mv_joueurs.push_back(bot);
     }
-    for(auto& i : mv_joueurs) {
-        std::cout << *i << "\n";
-    }
 }
 
 Plateau_t::~Plateau_t() {
@@ -79,5 +76,9 @@ Carte_t* Plateau_t::tirerCarte() {
 }
 
 void Plateau_t::initTirage() {
-    
+    for(int i = 0; i < 5; i++) {
+        for(int j = 0; j < 5; j++) {
+            mv_joueurs[i]->addCarte(this->tirerCarte());
+        }
+    }
 }

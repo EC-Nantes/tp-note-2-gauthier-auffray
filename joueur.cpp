@@ -36,6 +36,10 @@ std::ostream& operator<<(std::ostream& o, Joueur_t& c) {
         couleur = "error";
         break;
     }
-    o << "Joueur, couleur : " << couleur;
+    o << "Joueur : couleur = " << couleur << "\nCartes :\n";
+    std::vector<Carte_t*>::iterator it;
+    for(it = c.mv_cartes.begin(); it != c.mv_cartes.end(); it++) {
+        o << *(*it);
+    }
     return o;
 }

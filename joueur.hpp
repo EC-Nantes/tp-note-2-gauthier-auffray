@@ -29,6 +29,7 @@ class Joueur_t{
         virtual void choixCarte() = 0;
         void tirage(Carte_t* carte);
         Couleur_joueur getCouleur();
+        std::vector<Carte_t*>& getCartes() {return mv_cartes;}
         friend std::ostream& operator<<(std::ostream&, Joueur_t&);
 };
 
