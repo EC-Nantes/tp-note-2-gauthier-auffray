@@ -2,11 +2,17 @@
 #include <algorithm>
 #include <iostream>
 #include "joueurReel.hpp"
+#include "bot.hpp"
 
 Plateau_t::Plateau_t(uint8_t nb_joueur_reel) {
     int i = 0;
     for(i = 0; i < nb_joueur_reel; i++) {
         JoueurReel_t* joueur = new JoueurReel_t((Couleur_joueur)i);
+        this->mv_joueurs.push_back(joueur);
+    }
+    for(i = nb_joueur_reel; i < 5; i++) {
+        Bot_t* bot = new Bot_t((Couleur_joueur)i);
+        this->mv_joueurs.push_back(bot);
     }
 }
 
@@ -15,6 +21,10 @@ Plateau_t::~Plateau_t() {
         delete pItem;
     }
     mv_pioche.clear();
+    for(auto& pItem2 : mv_joueurs){  
+        delete pItem2;
+    }
+    mv_joueurs.clear();
 }
 
 void Plateau_t::initPioche() {
