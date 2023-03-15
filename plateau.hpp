@@ -13,13 +13,9 @@ class Plateau_t{
         std::vector<std::vector<Joueur_t*>> mv_cases;
         
     public:
-        Plateau_t() {}  // contructor
-        ~Plateau_t() {
-            for(auto& pItem : mv_pioche){  
-                delete pItem;
-            }
-            mv_pioche.clear();
-        }
+        Plateau_t() = delete;  // contructor
+        Plateau_t(uint8_t);
+        ~Plateau_t();
 
         //Méthodes
         void initPioche();

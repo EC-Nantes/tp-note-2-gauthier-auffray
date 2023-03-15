@@ -2,6 +2,16 @@
 #include <algorithm>
 #include <iostream>
 
+Plateau_t::Plateau_t(uint8_t nb_joueur_reel) {
+    
+}
+
+Plateau_t::~Plateau_t() {
+    for(auto& pItem : mv_pioche){  
+        delete pItem;
+    }
+    mv_pioche.clear();
+}
 
 void Plateau_t::initPioche() {
     CouleurCarte_t couleur = CouleurCarte_t::ROUGE_C;
@@ -9,7 +19,6 @@ void Plateau_t::initPioche() {
     for(int i = 0; i < 5; i++) {
         typeAction = TypeAction_t::AVANCER;
         Carte_t* carte = new Carte_t(couleur, typeAction, 2);
-        std::cout << "Creation carte coul : " << carte << "\n";
         mv_pioche.push_back(carte);
         for(int j = 0; j < 5; j++) {
             Carte_t* carte = new Carte_t(couleur, typeAction, 1);
