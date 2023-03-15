@@ -5,12 +5,12 @@
 #include <iostream>
 
 enum CouleurCarte_t {
-    ROUGE,
-    BLEU,
-    VERT,
-    JAUNE,
-    VIOLET,
-    NEUTRE
+    ROUGE_C,
+    BLEU_C,
+    VERT_C,
+    JAUNE_C,
+    VIOLET_C,
+    NEUTRE_C
 };
 
 enum TypeAction_t {

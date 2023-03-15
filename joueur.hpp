@@ -5,11 +5,11 @@
 #include "carte.hpp"
 
 enum Couleur_joueur {
-        ROUGE,
-        BLEU,
-        VERT,
-        JAUNE,
-        VIOLET
+        ROUGE_J,
+        BLEU_J,
+        VERT_J,
+        JAUNE_J,
+        VIOLET_J
     };
 
 class Joueur_t{
