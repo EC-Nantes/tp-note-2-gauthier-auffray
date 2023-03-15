@@ -23,6 +23,7 @@ class Plateau_t{
 
         //Méthodes
         void initPioche();
+        Carte_t* tirerCarte();
         // void initTirage();
         // void action(Joueur_t);
 };
