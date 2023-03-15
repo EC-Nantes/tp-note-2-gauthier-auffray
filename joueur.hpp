@@ -20,9 +20,8 @@ class Joueur_t{
        
 
     public:
-        Joueur_t(Couleur_joueur couleur);
-        Joueur_t(/* args */);
-        ~Joueur_t();
+        Joueur_t(Couleur_joueur couleur) {}
+        Joueur_t() {}
 
         //Méthodes
         void addCarte(Carte_t* carte);

@@ -1,15 +1,6 @@
 #include <iostream>
 #include "joueur.hpp"
 
-//Constructeurs
-Joueur_t::Joueur_t(Couleur_joueur couleur){
-
-}
-
-Joueur_t::~Joueur_t(){
-
-}
-
 //Méthodes
 void Joueur_t::addCarte(Carte_t* carte){
     mv_cartes.push_back(carte);
