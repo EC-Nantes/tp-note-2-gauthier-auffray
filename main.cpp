@@ -6,6 +6,7 @@
 
 int main() {
     test_choix_carte();
+    
     std::cout << "*********************************\n";
     std::cout << "********* Start tortuga *********\n";
     std::cout << "*********************************\n\n";
