@@ -14,9 +14,9 @@ Couleur_joueur Joueur_t::getCouleur() {
     return m_couleur;
 }
 
-std::ostream& operator<<(std::ostream& o, Joueur_t& c) {
+std::string Joueur_t::getCouleurS() {
     std::string couleur;
-    switch(c.getCouleur()) {
+    switch(m_couleur) {
     case Couleur_joueur::BLEU_J:
         couleur = "bleu";
         break;
@@ -36,7 +36,12 @@ std::ostream& operator<<(std::ostream& o, Joueur_t& c) {
         couleur = "error";
         break;
     }
-    o << "Joueur : couleur = " << couleur << "\n"; //<< "Cartes :\n";
+    return couleur;
+}
+
+std::ostream& operator<<(std::ostream& o, Joueur_t& c) {
+    std::string couleur = c.getCouleurS();
+    o << "Joueur " << couleur << "\n"; //<< "Cartes :\n";
     // std::vector<Carte_t*>::iterator it;
     // for(it = c.mv_cartes.begin(); it != c.mv_cartes.end(); it++) {
     //     o << *(*it);
