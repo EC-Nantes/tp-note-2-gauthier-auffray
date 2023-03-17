@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "carte.hpp"
 #include "joueur.hpp"
 #include "plateau.hpp"
@@ -24,8 +25,13 @@ int main() {
     uint8_t nb_joueur = choix - '0';
     std::cout << "nb joueur reel : " << unsigned(nb_joueur) << "\n";
     Plateau_t plateau(nb_joueur);
-    plateau.initPioche();
-    plateau.initTirage();
+    std::cout << plateau;
+    uint16_t c;
+    uint16_t p;
+    std::vector<Joueur_t*> joueurs = plateau.getJoueurs();
+    plateau.find_tortue(joueurs[4], &c, &p);
+    std::cout << "Le joueur " << joueurs[4]->getCouleurS();
+    std::cout << " est sur la case " << c << " a la position " << p +1<< "\n";
 
     // TypeAction_t AVANCER;
     // uint8_t case1 = 1;
