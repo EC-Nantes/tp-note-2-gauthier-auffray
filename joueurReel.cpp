@@ -13,12 +13,11 @@ void JoueurReel_t::choixCarte() {
     }
     while ( (choix < '1') || (choix > '5') ){
         std::cin.clear();
-        //std::cin.ignore(INT_MAX);
         std::cout << "Vous devez entrer un numero de 1 a 5 : \n";
         std::cin >> choix;
     }
     int iChoix = choix - 48;
     m_active_carte = mv_cartes[iChoix - 1];
     std::cout << "[Selection] Carte " << choix << " - " << *m_active_carte << "\n";
-    mv_cartes.erase(mv_cartes.begin() + (choix - 1)); //On supprime la carte de notre jeu
+    mv_cartes.erase(mv_cartes.begin() + (iChoix - 1)); //On supprime la carte de notre jeu
 }
