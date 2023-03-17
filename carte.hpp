@@ -22,17 +22,23 @@ enum TypeAction_t {
 class Carte_t
 {
 private:
-    CouleurCarte_t couleur;
-    TypeAction_t typeAction;
-    uint8_t nbCase;
+    CouleurCarte_t m_couleur;
+    TypeAction_t m_typeAction;
+    uint8_t m_nbCase;
 public:
     Carte_t(CouleurCarte_t, TypeAction_t, uint8_t);  // constructor
     ~Carte_t(); // destructor
 
+    //Getteurs
+    CouleurCarte_t getCouleur() const {return m_couleur;}
+    TypeAction_t getTypeAction() const {return m_typeAction;}
+    uint8_t getNbCase() const {return m_nbCase;}
+
+    //Setteurs
+    void setCouleur(CouleurCarte_t c) {m_couleur = c;}
+    void setTypeAction(TypeAction_t ta) {m_typeAction = ta;}
+    void setNbCase(uint8_t nbc) {m_nbCase = nbc;}
+
     friend std::ostream& operator<<(std::ostream&, Carte_t&); //fonction pouvant etre appelé sans instanciation d'objet mais accès membres
 };
-
-
-
-
 #endif

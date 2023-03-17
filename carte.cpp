@@ -1,9 +1,9 @@
 #include "carte.hpp"
 
 Carte_t::Carte_t(CouleurCarte_t couleur, TypeAction_t type, uint8_t nbCase) {
-    this->couleur = couleur;
-    this->typeAction = type;
-    this->nbCase = nbCase;
+    m_couleur = couleur;
+    m_typeAction = type;
+    m_nbCase = nbCase;
 }
 
 Carte_t::~Carte_t() {
@@ -13,7 +13,7 @@ std::ostream& operator<<(std::ostream& o, Carte_t& c) {
     std::string action = "";
     std::string couleur = "";
 
-    switch (c.typeAction){
+    switch (c.m_typeAction){
         case 0:
             action = "Avancer";
             break;
@@ -27,7 +27,7 @@ std::ostream& operator<<(std::ostream& o, Carte_t& c) {
             action = "error";
     }
 
-    switch (c.couleur){
+    switch (c.m_couleur){
         case 0:
             couleur = "rouge";
             break;
@@ -50,21 +50,21 @@ std::ostream& operator<<(std::ostream& o, Carte_t& c) {
             couleur = "error";
     }
 
-    if (c.couleur == 5) {
-        if (c.typeAction != 2) {
+    if (c.m_couleur == 5) {
+        if (c.m_typeAction != 2) {
             o << "Action : " << action << " ";
-            o << "de " << unsigned(c.nbCase) << " case(s) ";
+            o << "de " << unsigned(c.m_nbCase) << " case(s) ";
             o << "une tortue de la couleur de votre choix.\n";
         }
         else { //DERNIERES
             o << "Action : " << action << " ";
-            o << "de " << unsigned(c.nbCase) << " cases ";
+            o << "de " << unsigned(c.m_nbCase) << " cases ";
             o << "une ou les tortues presentes sur la derniere case.\n";
         }
     }
     else {
         o << "Action : " << action << " ";
-        o << "de " << unsigned(c.nbCase) << " cases ";
+        o << "de " << unsigned(c.m_nbCase) << " cases ";
         o << "les tortues de couleur " << couleur << ".\n";  
     }
     return o;
