@@ -23,6 +23,7 @@ class Plateau_t{
         Carte_t* tirerCarte();
         bool find_tortue(Joueur_t*, uint16_t*, uint16_t*);
         std::vector<Joueur_t*>& getJoueurs() {return mv_joueurs;}
+        std::vector<Joueur_t*> getDerniers();
 
         friend std::ostream& operator<<(std::ostream&, Plateau_t&);
 };

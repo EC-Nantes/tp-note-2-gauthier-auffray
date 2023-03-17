@@ -113,6 +113,17 @@ bool Plateau_t::find_tortue(Joueur_t* joueur, uint16_t* case_p, uint16_t* positi
     return to_return;
 }
 
+std::vector<Joueur_t*> Plateau_t::getDerniers() {
+    for(int i = 0; i < mv_cases.size(); i++) {
+        if(mv_cases[i]->size() > 0) {
+            std::vector<Joueur_t*> to_return = *(mv_cases[i]);
+            return to_return;
+        }
+    }
+    std::vector<Joueur_t*> error;
+    return error;
+}
+
 std::ostream& operator<<(std::ostream& o, Plateau_t& p) {
     std::cout << "Plateau : \n";
     for(int i = 0; i < p.mv_cases.size(); i++) {
