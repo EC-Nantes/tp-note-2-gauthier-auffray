@@ -95,6 +95,24 @@ void Plateau_t::initTirage() {
     }
 }
 
+bool Plateau_t::find_tortue(Joueur_t* joueur, uint16_t* case_p, uint16_t* position) {
+    Couleur_joueur to_find = joueur->getCouleur();
+    bool to_return = false;
+    for(uint16_t i = 0; i < mv_cases.size(); i++) {
+        std::vector<Joueur_t*> pile_joueurs = *mv_cases[i];
+        for(uint16_t j = 0; j < pile_joueurs.size(); j++) {
+            if(to_find == pile_joueurs[j]->getCouleur()) {
+                *case_p = i;
+                *position = j;
+                i = mv_cases.size();
+                j = pile_joueurs.size();
+                to_return = true;
+            }
+        }
+    }
+    return to_return;
+}
+
 std::ostream& operator<<(std::ostream& o, Plateau_t& p) {
     std::cout << "Plateau : \n";
     for(int i = 0; i < p.mv_cases.size(); i++) {
@@ -111,5 +129,6 @@ std::ostream& operator<<(std::ostream& o, Plateau_t& p) {
             std::cout << "Pas de joueur sur cette case\n";
         }
     }
+    std::cout << "\n";
     return o;
 }

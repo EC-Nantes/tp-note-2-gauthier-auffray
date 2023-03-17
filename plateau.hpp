@@ -21,7 +21,8 @@ class Plateau_t{
 
         //Méthodes
         Carte_t* tirerCarte();
-        // void action(Joueur_t);
+        bool find_tortue(Joueur_t*, uint16_t*, uint16_t*);
+        std::vector<Joueur_t*>& getJoueurs() {return mv_joueurs;}
 
         friend std::ostream& operator<<(std::ostream&, Plateau_t&);
 };
