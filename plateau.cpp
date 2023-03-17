@@ -124,6 +124,36 @@ std::vector<Joueur_t*> Plateau_t::getDerniers() {
     return error;
 }
 
+bool Plateau_t::tourDeJeu() {
+    for(int i = 0; i < mv_joueurs.size(); i++) {
+        std::cout << "Au joueur " << mv_joueurs[i]->getCouleurS() << " de jouer !\n";
+        CouleurCarte_t couleur;
+        TypeAction_t typeAction;
+        uint8_t nb_case;
+        mv_joueurs[i]->choixCarte(this->getDerniers(), &couleur, &typeAction, &nb_case);
+        bool win = mooveTortues(couleur, typeAction, nb_case);
+        std::cout << *this;
+        if(win) {
+            std::vector<Joueur_t*> winners = *(mv_cases[9]);
+            std::cout << "Le(s) joueur(s) ";
+            for(int j = 0; j < winners.size(); j++) {
+                std::cout << winners[j]->getCouleurS() << " ";
+            }
+            std::cout << "ont win !!!\n";
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Plateau_t::mooveTortues(CouleurCarte_t couleur, TypeAction_t type, uint8_t nb_case) {
+    //to do
+    //Faire évoluer mv_cases en fonction des paramètres
+    // checker si une tortue a gagner
+    // si une tortue a gagner renvoyer true
+    // sinon renvoyer false
+}
+
 std::ostream& operator<<(std::ostream& o, Plateau_t& p) {
     std::cout << "Plateau : \n";
     for(int i = 0; i < p.mv_cases.size(); i++) {
