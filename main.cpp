@@ -5,8 +5,7 @@
 #include "tests_unitaires.hpp"
 
 int main() {
-    test_choix_carte();
-    
+    //test_choix_carte();
     std::cout << "*********************************\n";
     std::cout << "********* Start tortuga *********\n";
     std::cout << "*********************************\n\n";
@@ -23,9 +22,10 @@ int main() {
         char_endl = std::cin.get();
     }
     uint8_t nb_joueur = choix - '0';
-    std::cout << "nb joueur : " << unsigned(nb_joueur);
+    std::cout << "nb joueur reel : " << unsigned(nb_joueur) << "\n";
     Plateau_t plateau(nb_joueur);
     plateau.initPioche();
+    plateau.initTirage();
 
     // TypeAction_t AVANCER;
     // uint8_t case1 = 1;

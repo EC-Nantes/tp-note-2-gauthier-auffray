@@ -1,20 +1,42 @@
 #include "plateau.hpp"
 #include <algorithm>
 #include <iostream>
+#include <vector>
 #include "joueurReel.hpp"
+#include "bot.hpp"
 
 Plateau_t::Plateau_t(uint8_t nb_joueur_reel) {
     int i = 0;
     for(i = 0; i < nb_joueur_reel; i++) {
         JoueurReel_t* joueur = new JoueurReel_t((Couleur_joueur)i);
+        this->mv_joueurs.push_back(joueur);
     }
+    for(i = nb_joueur_reel; i < 5; i++) {
+        Bot_t* bot = new Bot_t((Couleur_joueur)i);
+        this->mv_joueurs.push_back(bot);
+    }
+    mv_cases.push_back(&mv_joueurs);
+    for(int i = 0; i < 9; i++) {
+        std::vector<Joueur_t*>* tableau_joueur = new std::vector<Joueur_t*>;
+        this->mv_cases.push_back(tableau_joueur);
+    }
+    this->initPioche();
+    this->initTirage();
 }
 
 Plateau_t::~Plateau_t() {
-    for(auto& pItem : mv_pioche){  
+    for(auto& pItem : mv_pioche) {  
         delete pItem;
     }
     mv_pioche.clear();
+    for(auto& pItem : mv_joueurs) {  
+        delete pItem;
+    }
+    mv_joueurs.clear();
+    for(auto& pItem : mv_cases) {
+        delete pItem;
+    }
+    mv_cases.clear();
 }
 
 void Plateau_t::initPioche() {
@@ -63,4 +85,31 @@ Carte_t* Plateau_t::tirerCarte() {
     Carte_t* to_return = mv_pioche.back();
     mv_pioche.pop_back();
     return to_return;
+}
+
+void Plateau_t::initTirage() {
+    for(int i = 0; i < 5; i++) {
+        for(int j = 0; j < 5; j++) {
+            mv_joueurs[i]->addCarte(this->tirerCarte());
+        }
+    }
+}
+
+std::ostream& operator<<(std::ostream& o, Plateau_t& p) {
+    std::cout << "Plateau : \n";
+    for(int i = 0; i < p.mv_cases.size(); i++) {
+        std::cout << "[Case " << i + 1 << "]\n";
+        std::vector<Joueur_t*> pile_joueurs = *p.mv_cases[i];
+        if(pile_joueurs.size() > 0) {
+            for(int j = 0; j < pile_joueurs.size(); j++) {
+                std::cout << "\tJoueur en position " << j + 1 << " : ";
+                std::cout << *pile_joueurs[j];
+            }
+            std::cout << "\n";
+        }
+        else {
+            std::cout << "Pas de joueur sur cette case\n";
+        }
+    }
+    return o;
 }

@@ -1,4 +1,5 @@
 #include "joueurReel.hpp"
+#include <string>
 
 //Méthodes
 void JoueurReel_t::choixCarte() {

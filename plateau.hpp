@@ -10,7 +10,9 @@ class Plateau_t{
     private:
         std::vector<Carte_t*> mv_pioche;
         std::vector<Joueur_t*> mv_joueurs;
-        std::vector<std::vector<Joueur_t*>> mv_cases;
+        std::vector<std::vector<Joueur_t*>*> mv_cases;
+        void initPioche();
+        void initTirage();
         
     public:
         Plateau_t() = delete;  // contructor
@@ -18,10 +20,10 @@ class Plateau_t{
         ~Plateau_t();
 
         //Méthodes
-        void initPioche();
         Carte_t* tirerCarte();
-        // void initTirage();
         // void action(Joueur_t);
+
+        friend std::ostream& operator<<(std::ostream&, Plateau_t&);
 };
 
 
