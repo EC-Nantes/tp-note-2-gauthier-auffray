@@ -9,6 +9,7 @@
 #include "bot.hpp"
 
 void test_choix_carte();
-
+void test_find_tortues();
+void test_get_derniers();
 
 #endif
