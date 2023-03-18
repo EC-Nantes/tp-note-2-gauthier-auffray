@@ -12,6 +12,6 @@ class JoueurReel_t : public Joueur_t {
         JoueurReel_t() = delete;
 
         //Méthodes
-        void choixCarte();
+        void choixCarte(std::vector<Joueur_t*>, CouleurCarte_t*, TypeAction_t*, int*);
 };
 #endif

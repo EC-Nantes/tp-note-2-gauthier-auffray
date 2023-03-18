@@ -25,13 +25,18 @@ class Joueur_t{
         Joueur_t(Couleur_joueur couleur) {m_couleur = couleur;}
         Joueur_t() = delete;
 
-        //Méthodes
-        void addCarte(Carte_t* carte);
-        virtual void choixCarte() = 0;
-        void tirage(Carte_t* carte);
+        //Getteurs
         Couleur_joueur getCouleur();
         std::string getCouleurS();
         std::vector<Carte_t*>& getCartes() {return mv_cartes;}
+
+        //Méthodes
+        void addCarte(Carte_t* carte);
+        virtual void choixCarte(std::vector<Joueur_t*>, CouleurCarte_t*, TypeAction_t*, int*) = 0;
+        virtual Couleur_joueur choixCouleurT() = 0;
+        virtual bool choixDeplacementT() = 0;
+        void tirage(Carte_t* carte);
+        
         friend std::ostream& operator<<(std::ostream&, Joueur_t&);
 };
 
