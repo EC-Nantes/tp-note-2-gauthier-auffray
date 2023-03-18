@@ -10,12 +10,12 @@ void JoueurReel_t::choixCarte(std::vector<Joueur_t*> v_joueurs, CouleurCarte_t* 
     //CHOIX CARTE
     std::cout << "Veuillez choisir une carte en tapant son numero : \n";
     for(it_carte; it_carte != mv_cartes.end(); it_carte++){
-        std::cout << "Carte " << i << " - " << **it_carte << "\n";
+        std::cout << "Carte " << i << " - " << **it_carte;
         i++;
     }
     while ( (choix < '1') || (choix > '5') ){
         std::cin.clear();
-        std::cout << "Vous devez entrer un numero de 1 a 5 : \n";
+        std::cout << "Vous devez entrer un numero de 1 a 5 : ";
         std::cin >> choix;
     }
     int iChoix = choix - 48;
