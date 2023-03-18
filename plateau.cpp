@@ -129,7 +129,7 @@ bool Plateau_t::tourDeJeu() {
         std::cout << "Au joueur " << mv_joueurs[i]->getCouleurS() << " de jouer !\n";
         CouleurCarte_t couleur;
         TypeAction_t typeAction;
-        uint8_t nb_case;
+        int nb_case;
         mv_joueurs[i]->choixCarte(this->getDerniers(), &couleur, &typeAction, &nb_case);
         bool win = mooveTortues(couleur, typeAction, nb_case);
         std::cout << *this;
@@ -146,12 +146,13 @@ bool Plateau_t::tourDeJeu() {
     return false;
 }
 
-bool Plateau_t::mooveTortues(CouleurCarte_t couleur, TypeAction_t type, uint8_t nb_case) {
+bool Plateau_t::mooveTortues(CouleurCarte_t couleur, TypeAction_t type, int nb_case) {
     //to do
     //Faire évoluer mv_cases en fonction des paramètres
     // checker si une tortue a gagner
     // si une tortue a gagner renvoyer true
     // sinon renvoyer false
+    return false;
 }
 
 std::ostream& operator<<(std::ostream& o, Plateau_t& p) {

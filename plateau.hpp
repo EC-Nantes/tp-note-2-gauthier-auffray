@@ -25,7 +25,7 @@ class Plateau_t{
         std::vector<Joueur_t*>& getJoueurs() {return mv_joueurs;}
         std::vector<Joueur_t*> getDerniers();
         bool tourDeJeu();
-        bool mooveTortues(CouleurCarte_t, TypeAction_t, uint8_t);
+        bool mooveTortues(CouleurCarte_t, TypeAction_t, int);
 
         friend std::ostream& operator<<(std::ostream&, Plateau_t&);
 };
