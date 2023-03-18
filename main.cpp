@@ -32,6 +32,10 @@ int main() {
     plateau.find_tortue(joueurs[4], &c, &p);
     std::cout << "Le joueur " << joueurs[4]->getCouleurS();
     std::cout << " est sur la case " << c << " a la position " << p +1<< "\n";
+    std::vector<Joueur_t*> joueurs_2 = plateau.getDerniers();
+    for(auto& temp : joueurs_2) {
+        std::cout << *temp << "\n";
+    }
 
     // TypeAction_t AVANCER;
     // uint8_t case1 = 1;
