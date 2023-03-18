@@ -33,8 +33,8 @@ class Joueur_t{
         //Méthodes
         void addCarte(Carte_t* carte);
         virtual void choixCarte(std::vector<Joueur_t*>, CouleurCarte_t*, TypeAction_t*, int*) = 0;
-        virtual Couleur_joueur choixCouleurT() = 0;
-        virtual bool choixDeplacementT() = 0;
+        // virtual Couleur_joueur choixCouleurT() = 0;
+        // virtual bool choixDeplacementT() = 0;
         void tirage(Carte_t* carte);
         
         friend std::ostream& operator<<(std::ostream&, Joueur_t&);
