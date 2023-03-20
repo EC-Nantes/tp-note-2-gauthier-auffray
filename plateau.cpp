@@ -89,9 +89,13 @@ void Plateau_t::initPioche() {
 }
 
 Carte_t* Plateau_t::tirerCarte() {
-    Carte_t* to_return = mv_pioche.back();
-    mv_pioche.pop_back();
-    return to_return;
+    if(mv_pioche.size() > 0) {
+        Carte_t* to_return = mv_pioche.back();
+        mv_pioche.pop_back();
+        return to_return;
+    }
+    std::cout << "[ATTENTION] Plus de carte dans la pioche\n";
+    return nullptr;
 }
 
 void Plateau_t::initTirage() {
@@ -137,6 +141,7 @@ bool Plateau_t::tourDeJeu() {
         TypeAction_t typeAction;
         int nb_case;
         mv_joueurs[i]->choixCarte(this->getDerniers(), &couleur, &typeAction, &nb_case);
+        mv_joueurs[i]->addCarte(this->tirerCarte());
         bool win = mooveTortues(couleur, typeAction, nb_case);
         std::cout << *this;
         if(win) {
@@ -187,21 +192,26 @@ bool Plateau_t::mooveTortues(CouleurCarte_t couleur, TypeAction_t type, int nb_c
             break;
         }
         find_tortue(couleur_j, &case_p, &position);
-        while((int)case_p + nb_case < 0 || ((int)case_p + nb_case > 9)) {
-            nb_case--;
+        if(type == TypeAction_t::AVANCER) {
+            while(((int)case_p + nb_case) > 9) {
+                nb_case--;
+            }
         }
-        if(nb_case > 0) {
+        else if(type == TypeAction_t::RECULER) {
+            while (((int)case_p - nb_case) < 0) {
+                nb_case--;
+            }
+            nb_case = (-nb_case);
+        }
+        if(nb_case != 0) {
             std::vector<Joueur_t*> temp;
             for(int i = mv_cases[case_p]->size() - 1; i > position - 1; i--) {
                 temp.push_back(mv_cases[case_p]->back());
                 mv_cases[case_p]->pop_back();
-                std::cout << "premiere boucle i = " << i << "\n";
-                std::cout << "size temp : " << temp.size() << "\n";
             }
             for(int i = temp.size(); i > 0; i--) {
                 mv_cases[case_p + nb_case]->push_back(temp.back());
                 temp.pop_back();
-                std::cout << "deuxieme boucle i = " << i << "\n";
             }
         }
     }
@@ -221,9 +231,6 @@ std::ostream& operator<<(std::ostream& o, Plateau_t& p) {
                 std::cout << "\tJoueur en position " << j + 1 << " : ";
                 std::cout << *pile_joueurs[j];
             }
-        }
-        else {
-            std::cout << "Pas de joueur sur cette case\n";
         }
     }
     std::cout << "\n";
