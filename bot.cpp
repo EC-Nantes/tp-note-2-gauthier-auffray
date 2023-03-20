@@ -1,5 +1,6 @@
 #include "bot.hpp"
 #include "random"
+#include <string>
 
 //Méthodes
 void Bot_t::choixCarte(std::vector<Joueur_t*> v_joueurs, CouleurCarte_t* couleur, TypeAction_t* action, int* nbCases) {
@@ -17,55 +18,71 @@ void Bot_t::choixCarte(std::vector<Joueur_t*> v_joueurs, CouleurCarte_t* couleur
     if(m_active_carte->getCouleur() == NEUTRE_C){
         //AVANCER
         if(m_active_carte->getTypeAction() == AVANCER){
-            std::cout << "[BOT] Choix de la tortue a avancer : \n";
+            std::cout << "[BOT] Choix de la tortue a avancer : ";
+            std::string couleurString;
             srand (time(NULL)); //init seed
             int choix = rand() % 5 + 1; //nb entre 1 et 5 compris
 
             switch(choix){
                 case 1:
                     *couleur = ROUGE_C;
+                    couleurString = "Rouge";
                     break;
                 case 2:
                     *couleur = BLEU_C;
+                    couleurString = "Bleu";
                     break;
                 case 3:
                     *couleur = VERT_C;
+                    couleurString = "Vert";
                     break;
                 case 4:
                     *couleur = JAUNE_C;
+                    couleurString = "Jaune";
                     break;
                 case 5:
                     *couleur = VIOLET_C;
+                    couleurString = "Violet";
                     break;
                 default:
+                    couleurString = "Error";
                     std::cout << "Erreur choix couleurs !!! \n";
             }
+            std::cout << couleurString << "\n";
         }
         //RECULER
         else if(m_active_carte->getTypeAction() == RECULER){
-            std::cout << "[BOT] Choix la couleur a reculer : \n";
-            srand (time(NULL)); //init seed
+            std::cout << "[BOT] Choix la couleur a reculer : ";
+            std::string couleurString;
+            srand(time(NULL)); //init seed
             int choix = rand() % 5 + 1; //nb entre 1 et 5 compris
 
             switch(choix){
                 case 1:
                     *couleur = ROUGE_C;
+                    couleurString = "Rouge";
                     break;
                 case 2:
                     *couleur = BLEU_C;
+                    couleurString = "Bleu";
                     break;
                 case 3:
                     *couleur = VERT_C;
+                    couleurString = "Vert";
                     break;
                 case 4:
                     *couleur = JAUNE_C;
+                    couleurString = "Jaune";
                     break;
                 case 5:
                     *couleur = VIOLET_C;
+                    couleurString = "Violet";
                     break;
                 default:
+                    couleurString = "Error";
                     std::cout << "Erreur choix couleurs !!! \n";
             }
+            std::cout << couleurString << "\n";
         }
         //DERNIER
         else if (m_active_carte->getTypeAction() == DERNIER){ 
@@ -141,6 +158,5 @@ void Bot_t::choixCarte(std::vector<Joueur_t*> v_joueurs, CouleurCarte_t* couleur
     else { //CARTE non NEUTRE
         *couleur = m_active_carte->getCouleur();
         *nbCases = m_active_carte->getNbCase();
-        std::cout << "Pas de choix d'action supplementaire a effectuer\n";
     }
 }

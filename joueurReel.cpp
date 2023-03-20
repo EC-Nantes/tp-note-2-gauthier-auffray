@@ -75,7 +75,7 @@ void JoueurReel_t::choixCarte(std::vector<Joueur_t*> v_joueurs, CouleurCarte_t* 
         else if (m_active_carte->getTypeAction() == DERNIER){ 
             std::cout << "Que souhaitez-vous faire ? \n";
             std::cout << "1 - Deplacer une tortue de mon choix \n";
-            std::cout << "2 - Deplacer toutes les tortues de la derniere case\n";
+            std::cout << "2 - Deplacer toutes les dernieres tortues\n";
             std::cin >> choix;
             while ( (choix < '1') || (choix > '2') ){
                 std::cin.clear();
@@ -158,6 +158,5 @@ void JoueurReel_t::choixCarte(std::vector<Joueur_t*> v_joueurs, CouleurCarte_t* 
     }//fin NEUTRE_C
     else { //CARTE non NEUTRE
         *couleur = m_active_carte->getCouleur();
-        std::cout << "Pas de choix d'action supplementaire a effectuer.\n";
     }
 }
