@@ -86,13 +86,15 @@ void Bot_t::choixCarte(std::vector<Joueur_t*> v_joueurs, CouleurCarte_t* couleur
         }
         //DERNIER
         else if (m_active_carte->getTypeAction() == DERNIER){ 
-            std::cout << "[BOT] Choix action DERNIER : \n";
+            std::cout << "[BOT] Choix action : ";
             srand (time(NULL)); //init seed
             int choix = rand() % 2 + 1; //nb entre 1 et 5 compris
 
             //1 TORTUE AU CHOIX
             if(choix == 1){
-                std::cout << "[BOT] Choix de la couleur a avancer : \n";
+                std::cout << "UNE tortue\n";
+                std::cout << "[BOT] Choix de la couleur a avancer : ";
+                std::string couleurString;
                 *action = AVANCER;
                 srand (time(NULL)); //init seed
                 int choix = rand() % 5 + 1; //nb entre 1 et 5 compris
@@ -100,53 +102,39 @@ void Bot_t::choixCarte(std::vector<Joueur_t*> v_joueurs, CouleurCarte_t* couleur
                 switch(choix){
                     case 1:
                         *couleur = ROUGE_C;
+                        couleurString = "Rouge";
                         break;
                     case 2:
                         *couleur = BLEU_C;
+                        couleurString = "Bleu";
                         break;
                     case 3:
                         *couleur = VERT_C;
+                        couleurString = "Vert";
                         break;
                     case 4:
                         *couleur = JAUNE_C;
+                        couleurString = "Jaune";
                         break;
                     case 5:
                         *couleur = VIOLET_C;
+                        couleurString = "Violet";
                         break;
                     default:
+                        couleurString = "Error";
                         std::cout << "Erreur choix couleurs !!! \n";
                 }
+                std::cout << couleurString << "\n";
+
             }
             //TOUTES LES DERNIERES TORTUES
             else {
+                std::cout << "LES dernieres tourtues\n";
                 *couleur = NEUTRE_C;    //Couple DERNIER + NEUTRE_C = Deplacer toutes les tortues case plus faible
-                if(m_active_carte->getNbCase() == 1){
-                    std::cout << "[BOT] Deplacement des tortues suivantes de 1 case :\n";
-                }
-                else {
-                    std::cout << "[BOT] Deplacement des tortues suivantes de 2 cases :\n";
-                }
-
+                std::cout << "[BOT] Deplacement des tortues suivantes de ";
+                std::cout << unsigned(m_active_carte->getNbCase()) << " case :\n";
                 for (auto& joueur : v_joueurs){
-                    switch(joueur->getCouleur()){
-                    case ROUGE_C:
-                        std::cout << " - ROUGE\n";
-                        break;
-                    case BLEU_C:
-                        std::cout << " - BLEU\n";
-                        break;
-                    case VERT_C:
-                        std::cout << " - VERT\n";
-                        break;
-                    case JAUNE_C:
-                        std::cout << " - JAUNE\n";
-                        break;
-                    case VIOLET_C:
-                        std::cout << " - VIOLET\n";
-                        break;
-                    default:
-                        std::cout << "Erreur choix couleurs !!! \n";
-                    }
+                    std::cout << " - " << joueur->getCouleurS() << "\n";
                 }
             }
         }//fin type_action

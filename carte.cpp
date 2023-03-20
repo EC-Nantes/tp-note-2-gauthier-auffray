@@ -59,7 +59,7 @@ std::ostream& operator<<(std::ostream& o, Carte_t& c) {
         else { //DERNIERES
             o << action << " ";
             o << "de " << unsigned(c.m_nbCase) << " case(s) ";
-            o << "une ou les tortues presentes sur la derniere case\n";
+            o << "la/les dernieres tortues\n";
         }
     }
     else {
