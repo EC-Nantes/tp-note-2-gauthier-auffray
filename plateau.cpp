@@ -222,13 +222,13 @@ bool Plateau_t::mooveTortues(CouleurCarte_t couleur, TypeAction_t type, int nb_c
 }
 
 std::ostream& operator<<(std::ostream& o, Plateau_t& p) {
-    std::cout << "Plateau : \n";
+    std::cout << "\nPlateau : \n";
     for(int i = 0; i < p.mv_cases.size(); i++) {
         std::cout << "[Case " << i + 1 << "]\n";
         std::vector<Joueur_t*> pile_joueurs = *p.mv_cases[i];
         if(pile_joueurs.size() > 0) {
             for(int j = 0; j < pile_joueurs.size(); j++) {
-                std::cout << "\tJoueur en position " << j + 1 << " : ";
+                std::cout << "\tPosition " << j + 1 << " : ";
                 std::cout << *pile_joueurs[j];
             }
         }
