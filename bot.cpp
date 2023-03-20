@@ -7,6 +7,8 @@ void Bot_t::choixCarte(std::vector<Joueur_t*> v_joueurs, CouleurCarte_t* couleur
     srand (time(NULL)); //init seed
     int choix = rand() % 5 + 1; //nb entre 1 et 5 compris
     m_active_carte = mv_cartes[choix - 1];
+    *action = m_active_carte->getTypeAction();
+    *nbCases = m_active_carte->getNbCase();
     std::cout << "[Selection] Carte " << choix << " - " << *m_active_carte << "\n";
     mv_cartes.erase(mv_cartes.begin() + (choix - 1)); //On supprime la carte de notre jeu
 
@@ -80,11 +82,9 @@ void Bot_t::choixCarte(std::vector<Joueur_t*> v_joueurs, CouleurCarte_t* couleur
                 *couleur = NEUTRE_C;    //Couple DERNIER + NEUTRE_C = Deplacer toutes les tortues case plus faible
                 if(m_active_carte->getNbCase() == 1){
                     std::cout << "[BOT] Deplacement des tortues suivantes de 1 case :\n";
-                    *nbCases = 1;
                 }
                 else {
                     std::cout << "[BOT] Deplacement des tortues suivantes de 2 cases :\n";
-                    *nbCases = 2;
                 }
 
                 for (auto& joueur : v_joueurs){
@@ -117,6 +117,7 @@ void Bot_t::choixCarte(std::vector<Joueur_t*> v_joueurs, CouleurCarte_t* couleur
     }//fin NEUTRE_C
     else { //CARTE non NEUTRE
         *couleur = m_active_carte->getCouleur();
+        *nbCases = m_active_carte->getNbCase();
         std::cout << "Pas de choix d'action supplementaire a effectuer.\n";
     }
 }
