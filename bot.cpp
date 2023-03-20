@@ -43,7 +43,29 @@ void Bot_t::choixCarte(std::vector<Joueur_t*> v_joueurs, CouleurCarte_t* couleur
         }
         //RECULER
         else if(m_active_carte->getTypeAction() == RECULER){
-            *couleur = m_active_carte->getCouleur();
+            std::cout << "[BOT] Choix la couleur a reculer : \n";
+            srand (time(NULL)); //init seed
+            int choix = rand() % 5 + 1; //nb entre 1 et 5 compris
+
+            switch(choix){
+                case 1:
+                    *couleur = ROUGE_C;
+                    break;
+                case 2:
+                    *couleur = BLEU_C;
+                    break;
+                case 3:
+                    *couleur = VERT_C;
+                    break;
+                case 4:
+                    *couleur = JAUNE_C;
+                    break;
+                case 5:
+                    *couleur = VIOLET_C;
+                    break;
+                default:
+                    std::cout << "Erreur choix couleurs !!! \n";
+            }
         }
         //DERNIER
         else if (m_active_carte->getTypeAction() == DERNIER){ 
