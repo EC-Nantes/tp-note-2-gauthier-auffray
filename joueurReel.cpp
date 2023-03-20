@@ -22,7 +22,7 @@ void JoueurReel_t::choixCarte(std::vector<Joueur_t*> v_joueurs, CouleurCarte_t* 
 
     //MAJ carte active et arguments
     m_active_carte = mv_cartes[iChoix - 1];
-    std::cout << "[Selection] Carte " << choix << " - " << *m_active_carte << "\n";
+    std::cout << "Carte " << choix << " - " << *m_active_carte;
     *action = m_active_carte->getTypeAction();
     *nbCases = m_active_carte->getNbCase();
     
@@ -153,7 +153,7 @@ void JoueurReel_t::choixCarte(std::vector<Joueur_t*> v_joueurs, CouleurCarte_t* 
         }//fin type_action
         //ERROR
         else {
-            std::cout << "Erreur type action.\n";
+            std::cout << "Erreur type action\n";
         }   
     }//fin NEUTRE_C
     else { //CARTE non NEUTRE

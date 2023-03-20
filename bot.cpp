@@ -3,13 +3,13 @@
 
 //Méthodes
 void Bot_t::choixCarte(std::vector<Joueur_t*> v_joueurs, CouleurCarte_t* couleur, TypeAction_t* action, int* nbCases) {
-    std::cout << "Le bot choisis une carte : \n";
+    std::cout << "[Bot] Choix d'une carte : \n";
     srand (time(NULL)); //init seed
     int choix = rand() % 5 + 1; //nb entre 1 et 5 compris
     m_active_carte = mv_cartes[choix - 1];
     *action = m_active_carte->getTypeAction();
     *nbCases = m_active_carte->getNbCase();
-    std::cout << "[Selection] Carte " << choix << " - " << *m_active_carte << "\n";
+    std::cout << "Carte " << choix << " - " << *m_active_carte;
     mv_cartes.erase(mv_cartes.begin() + (choix - 1)); //On supprime la carte de notre jeu
 
     //CHOIX ACTIONS SI CARTE NEUTRE
@@ -17,7 +17,7 @@ void Bot_t::choixCarte(std::vector<Joueur_t*> v_joueurs, CouleurCarte_t* couleur
     if(m_active_carte->getCouleur() == NEUTRE_C){
         //AVANCER
         if(m_active_carte->getTypeAction() == AVANCER){
-            std::cout << "[BOT] Choix la couleur a avancer : \n";
+            std::cout << "[BOT] Choix de la tortue a avancer : \n";
             srand (time(NULL)); //init seed
             int choix = rand() % 5 + 1; //nb entre 1 et 5 compris
 
@@ -53,7 +53,7 @@ void Bot_t::choixCarte(std::vector<Joueur_t*> v_joueurs, CouleurCarte_t* couleur
 
             //1 TORTUE AU CHOIX
             if(choix == 1){
-                std::cout << "[BOT] Choix la couleur a avancer : \n";
+                std::cout << "[BOT] Choix de la couleur a avancer : \n";
                 *action = AVANCER;
                 srand (time(NULL)); //init seed
                 int choix = rand() % 5 + 1; //nb entre 1 et 5 compris
@@ -119,6 +119,6 @@ void Bot_t::choixCarte(std::vector<Joueur_t*> v_joueurs, CouleurCarte_t* couleur
     else { //CARTE non NEUTRE
         *couleur = m_active_carte->getCouleur();
         *nbCases = m_active_carte->getNbCase();
-        std::cout << "Pas de choix d'action supplementaire a effectuer.\n";
+        std::cout << "Pas de choix d'action supplementaire a effectuer\n";
     }
 }

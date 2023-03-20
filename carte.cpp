@@ -50,22 +50,22 @@ std::ostream& operator<<(std::ostream& o, Carte_t& c) {
             couleur = "error";
     }
 
-    if (c.m_couleur == 5) {
-        if (c.m_typeAction != 2) {
-            o << "Action : " << action << " ";
+    if (c.m_couleur == CouleurCarte_t::NEUTRE_C) {
+        if (c.m_typeAction != TypeAction_t::DERNIER) {
+            o << action << " ";
             o << "de " << unsigned(c.m_nbCase) << " case(s) ";
-            o << "une tortue de la couleur de votre choix.\n";
+            o << "la tortue de votre choix\n";
         }
         else { //DERNIERES
-            o << "Action : " << action << " ";
+            o << action << " ";
             o << "de " << unsigned(c.m_nbCase) << " cases ";
-            o << "une ou les tortues presentes sur la derniere case.\n";
+            o << "une ou les tortues presentes sur la derniere case\n";
         }
     }
     else {
-        o << "Action : " << action << " ";
+        o << action << " ";
         o << "de " << unsigned(c.m_nbCase) << " cases ";
-        o << "les tortues de couleur " << couleur << ".\n";  
+        o << "la tortue " << couleur << "\n";  
     }
     return o;
 }
