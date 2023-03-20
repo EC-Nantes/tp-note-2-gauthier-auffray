@@ -158,11 +158,6 @@ bool Plateau_t::tourDeJeu() {
 }
 
 bool Plateau_t::mooveTortues(CouleurCarte_t couleur, TypeAction_t type, int nb_case) {
-    //to do
-    //Faire évoluer mv_cases en fonction des paramètres
-    // checker si une tortue a gagner
-    // si une tortue a gagner renvoyer true
-    // sinon renvoyer false
     if(type != TypeAction_t::DERNIER && couleur != CouleurCarte_t::NEUTRE_C) {
         uint16_t case_p;
         uint16_t position;
@@ -215,6 +210,32 @@ bool Plateau_t::mooveTortues(CouleurCarte_t couleur, TypeAction_t type, int nb_c
             }
         }
     }
+    else if(type == TypeAction_t::DERNIER && couleur == CouleurCarte_t::NEUTRE_C) {
+        for(int i = 0; i < mv_cases.size(); i++) {
+            if(mv_cases[i]->size() > 0) {
+                while((i + nb_case) > 9) {
+                    nb_case--;
+                }
+                if(nb_case != 0) {
+                    std::vector<Joueur_t*> temp;
+                    for(int j = mv_cases[i]->size(); j > 0; j--) {
+                        temp.push_back(mv_cases[i]->back());
+                        mv_cases[i]->pop_back();
+                    }
+                    for(int j = temp.size(); j > 0; j--) {
+                        mv_cases[i + nb_case]->push_back(temp.back());
+                        temp.pop_back();
+                    }
+                }
+                i = mv_cases.size();
+            }
+        }
+    }
+    else {
+        std::cerr << "\n[ERROR] TypeAction = " << type;
+        std::cout << " et CouleurCarte = " << couleur << "\n\n";
+    }
+
     if(mv_cases[9]->size() > 0) {
         return true;
     }
@@ -224,14 +245,14 @@ bool Plateau_t::mooveTortues(CouleurCarte_t couleur, TypeAction_t type, int nb_c
 std::ostream& operator<<(std::ostream& o, Plateau_t& p) {
     std::cout << "\nPlateau : \n";
     for(int i = 0; i < p.mv_cases.size(); i++) {
-        std::cout << "[Case " << i + 1 << "]\n";
+        std::cout << "[Case " << i + 1 << "] ";
         std::vector<Joueur_t*> pile_joueurs = *p.mv_cases[i];
         if(pile_joueurs.size() > 0) {
             for(int j = 0; j < pile_joueurs.size(); j++) {
-                std::cout << "\tPosition " << j + 1 << " : ";
-                std::cout << *pile_joueurs[j];
+                std::cout << pile_joueurs[j]->getCouleurS() << " ";
             }
         }
+        std::cout << "\n";
     }
     std::cout << "\n";
     return o;
