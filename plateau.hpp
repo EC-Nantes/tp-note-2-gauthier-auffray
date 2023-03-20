@@ -21,7 +21,7 @@ class Plateau_t{
 
         //Méthodes
         Carte_t* tirerCarte();
-        bool find_tortue(Joueur_t*, uint16_t*, uint16_t*);
+        bool find_tortue(Couleur_joueur, uint16_t*, uint16_t*);
         std::vector<Joueur_t*>& getJoueurs() {return mv_joueurs;}
         std::vector<Joueur_t*> getDerniers();
         bool tourDeJeu();

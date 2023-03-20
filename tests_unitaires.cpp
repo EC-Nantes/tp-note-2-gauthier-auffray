@@ -29,7 +29,7 @@ void test_find_tortues() {
     uint16_t c;
     uint16_t p;
     std::vector<Joueur_t*> joueurs = plateau.getJoueurs();
-    plateau.find_tortue(joueurs[4], &c, &p);
+    plateau.find_tortue(joueurs[4]->getCouleur(), &c, &p);
     std::cout << "Le joueur " << joueurs[4]->getCouleurS();
     std::cout << " est sur la case " << c << " a la position " << p +1<< "\n";
 }

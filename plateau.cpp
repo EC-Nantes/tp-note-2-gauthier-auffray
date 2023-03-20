@@ -7,19 +7,26 @@
 
 Plateau_t::Plateau_t(uint8_t nb_joueur_reel) {
     int i = 0;
-    for(i = 0; i < nb_joueur_reel; i++) {
-        JoueurReel_t* joueur = new JoueurReel_t((Couleur_joueur)i);
-        this->mv_joueurs.push_back(joueur);
-    }
-    for(i = nb_joueur_reel; i < 5; i++) {
-        Bot_t* bot = new Bot_t((Couleur_joueur)i);
-        this->mv_joueurs.push_back(bot);
-    }
-    mv_cases.push_back(&mv_joueurs);
-    for(int i = 0; i < 9; i++) {
+    for(int i = 0; i < 10; i++) {
         std::vector<Joueur_t*>* tableau_joueur = new std::vector<Joueur_t*>;
         this->mv_cases.push_back(tableau_joueur);
     }
+    for(i = 0; i < nb_joueur_reel; i++) {
+        JoueurReel_t* joueur = new JoueurReel_t((Couleur_joueur)i);
+        //JoueurReel_t* joueur2 = new JoueurReel_t(*joueur);
+        this->mv_joueurs.push_back(joueur);
+        mv_cases[0]->push_back(joueur);
+    }
+    for(i = nb_joueur_reel; i < 5; i++) {
+        Bot_t* bot = new Bot_t((Couleur_joueur)i);
+        //Bot_t* bot2 = new Bot_t(*bot2);
+        this->mv_joueurs.push_back(bot);
+        mv_cases[0]->push_back(bot);
+    }
+    
+    // for(int i = 0; i < mv_joueurs.size(); i++) {
+    //     mv_cases[0]->push_back(mv_joueurs[i]);
+    // }
     this->initPioche();
     this->initTirage();
 }
@@ -95,8 +102,7 @@ void Plateau_t::initTirage() {
     }
 }
 
-bool Plateau_t::find_tortue(Joueur_t* joueur, uint16_t* case_p, uint16_t* position) {
-    Couleur_joueur to_find = joueur->getCouleur();
+bool Plateau_t::find_tortue(Couleur_joueur to_find, uint16_t* case_p, uint16_t* position) {
     bool to_return = false;
     for(uint16_t i = 0; i < mv_cases.size(); i++) {
         std::vector<Joueur_t*> pile_joueurs = *mv_cases[i];
@@ -139,7 +145,7 @@ bool Plateau_t::tourDeJeu() {
             for(int j = 0; j < winners.size(); j++) {
                 std::cout << winners[j]->getCouleurS() << " ";
             }
-            std::cout << "ont win !!!\n";
+            std::cout << "a/ont win !!!\n";
             return true;
         }
     }
@@ -152,6 +158,56 @@ bool Plateau_t::mooveTortues(CouleurCarte_t couleur, TypeAction_t type, int nb_c
     // checker si une tortue a gagner
     // si une tortue a gagner renvoyer true
     // sinon renvoyer false
+    if(type != TypeAction_t::DERNIER && couleur != CouleurCarte_t::NEUTRE_C) {
+        uint16_t case_p;
+        uint16_t position;
+        Couleur_joueur couleur_j;
+        switch(couleur) {
+        case CouleurCarte_t::BLEU_C:
+            couleur_j = Couleur_joueur::BLEU_J;
+            break;
+        case CouleurCarte_t::JAUNE_C:
+            couleur_j = Couleur_joueur::JAUNE_J;
+            break;
+        case CouleurCarte_t::ROUGE_C:
+            couleur_j = Couleur_joueur::ROUGE_J;
+            break;
+        case CouleurCarte_t::VERT_C:
+            couleur_j = Couleur_joueur::VERT_J;
+            break;
+        case CouleurCarte_t::VIOLET_C:
+            couleur_j = Couleur_joueur::VIOLET_J;
+            break;
+        case CouleurCarte_t::NEUTRE_C:
+            std::cerr << "ERROR : Avancer joueur neutre\n";
+            couleur_j = Couleur_joueur::BLEU_J;
+            break;
+        default:
+            std::cerr << "ERROR : Avancer joueur couleur inexact\n";
+            break;
+        }
+        find_tortue(couleur_j, &case_p, &position);
+        while((int)case_p + nb_case < 0 || ((int)case_p + nb_case > 9)) {
+            nb_case--;
+        }
+        if(nb_case > 0) {
+            std::vector<Joueur_t*> temp;
+            for(int i = mv_cases[case_p]->size() - 1; i > position - 1; i--) {
+                temp.push_back(mv_cases[case_p]->back());
+                mv_cases[case_p]->pop_back();
+                std::cout << "premiere boucle i = " << i << "\n";
+                std::cout << "size temp : " << temp.size() << "\n";
+            }
+            for(int i = temp.size(); i > 0; i--) {
+                mv_cases[case_p + nb_case]->push_back(temp.back());
+                temp.pop_back();
+                std::cout << "deuxieme boucle i = " << i << "\n";
+            }
+        }
+    }
+    if(mv_cases[9]->size() > 0) {
+        return true;
+    }
     return false;
 }
 
@@ -165,7 +221,6 @@ std::ostream& operator<<(std::ostream& o, Plateau_t& p) {
                 std::cout << "\tJoueur en position " << j + 1 << " : ";
                 std::cout << *pile_joueurs[j];
             }
-            std::cout << "\n";
         }
         else {
             std::cout << "Pas de joueur sur cette case\n";
