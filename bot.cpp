@@ -54,6 +54,7 @@ void Bot_t::choixCarte(std::vector<Joueur_t*> v_joueurs, CouleurCarte_t* couleur
             //1 TORTUE AU CHOIX
             if(choix == 1){
                 std::cout << "[BOT] Choix la couleur a avancer : \n";
+                *action = AVANCER;
                 srand (time(NULL)); //init seed
                 int choix = rand() % 5 + 1; //nb entre 1 et 5 compris
 
