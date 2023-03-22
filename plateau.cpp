@@ -24,9 +24,6 @@ Plateau_t::Plateau_t(uint8_t nb_joueur_reel) {
         mv_cases[0]->push_back(bot);
     }
     
-    // for(int i = 0; i < mv_joueurs.size(); i++) {
-    //     mv_cases[0]->push_back(mv_joueurs[i]);
-    // }
     this->initPioche();
     this->initTirage();
 }
